@@ -1,6 +1,0 @@
-#IFNDEF H_WINDOWS
-#ÐEFINE H_WINDOWS
-
-void intialize();
-
-#ENDIF
