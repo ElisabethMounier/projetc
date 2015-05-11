@@ -3,18 +3,19 @@
 #include <string.h>
 #include <time.h> //pour l'initialisation de rand
 
+//Coucou les filles !
 
 /***********************************/
 /*           1.CONSTANTES          */
 /***********************************/
 
-int tempt_grid[5][8];      //grille de suppresion des bonbons, elle n'est pas affichée 
+int tempt_grid[5][8];      //grille de suppresion des bonbons, elle n'est pas affichée
 int grid[5][8];            //grille d'affichage
 int i;                     //pour parcourir les lignes (boucles for)
 int j;                     //pour parcourir les colonnes (boucles for)
 int score;                 //score calculer lignes par lignes et colonnes par colonnes, utiliser dans travelLine() et travelColumn()
 int moves=0;               //nombre de déplacements de bonbons
-int total_score;           //score total 
+int total_score;           //score total
 int couch;                 //les couches permettent de calculer le score
 
 
@@ -24,8 +25,8 @@ int couch;                 //les couches permettent de calculer le score
 
 //initialisation de Grid de manière aléatoire, la grille affichée
 void init_grid() {
-  // initialisation de rand 
-  srand(time(NULL)); 
+  // initialisation de rand
+  srand(time(NULL));
   for (i=0; i<5; i++) {
     for (j=0; j<8; j++) {
       grid[i][j]=rand()%6+1;
@@ -33,7 +34,7 @@ void init_grid() {
   }
 }
 
-//initialisation de tempt_grid à zero, la grille temporaire 
+//initialisation de tempt_grid à zero, la grille temporaire
 void init_tempt_grid() {
   for (i=0; i<5; i++) {
     for (j=0; j<8; j++) {
@@ -70,8 +71,8 @@ void refresh_tempt_grid() {
 //echange 2 bonbons dans grid
 void switch_candy(int x1, int y1, int x2, int y2) {
   int var;
-  //variable pour sauvegarder la valeur de grid[x1][y1]  
-  var=grid[x1][y1]; 
+  //variable pour sauvegarder la valeur de grid[x1][y1]
+  var=grid[x1][y1];
   grid[x1][y1]=grid[x2][y2];
   grid[x2][y2]=var;
 }
@@ -83,8 +84,8 @@ void switch_candy(int x1, int y1, int x2, int y2) {
 void fall_candy() {
   for (j=0; j<8; j++) {
     int x;
-    //avancement, pour optimiser le nombre de parcours de la colonne    
-    int avc=0; 
+    //avancement, pour optimiser le nombre de parcours de la colonne
+    int avc=0;
 
     for (x=0; x<4; x++) {
       for (i=0; i<(4-avc); i++) {
@@ -102,7 +103,7 @@ void fall_candy() {
 
 
 //genere aléatoirement un chiffre entre 1 et 6 (=bonbon) là où il y a des zeros (=case vide)
-void complete_tempt_grid() { 
+void complete_tempt_grid() {
   for (j=0; j<8; j++) {
     for (i=0; i<5; i++) {
       if (tempt_grid[i][j]==0) {
@@ -137,7 +138,7 @@ int compare_column(int i, int j) {
 }
 
 
-//fonction qui parcours la ligne i dans grid, 
+//fonction qui parcours la ligne i dans grid,
 //met à zero les bonbons à exploser dans tempt_grid,
 // attribue le score en fonction des couches
 void travel_line(int i) {
@@ -189,7 +190,7 @@ void travel_line(int i) {
       printf("diff et rien a supp avant\n");
       cpt=0;
     }
-    
+
     //CAS de détection d'erreurs, jamais rencontré
     else {
       printf("Erreur: pas de cas prévu.");
@@ -199,7 +200,7 @@ void travel_line(int i) {
 }
 
 
-//fonction qui parcours la colonne j dans grid, 
+//fonction qui parcours la colonne j dans grid,
 //met à zero les bonbons à exploser dans tempt_grid,
 // attribue le score en fonction des couches
 //(voir les commentaires dans travel_line(int i))
@@ -272,7 +273,7 @@ int travel_grid() {
 
 
 //fonction qui gere la selection de 2 bonbons de Grid répéré par leurs "coordonnées" pour les déplacer
-void move(int x1, int y1, int x2, int y2) { 
+void move(int x1, int y1, int x2, int y2) {
 
   //initialisation des couches
   couch=0;
@@ -286,13 +287,13 @@ void move(int x1, int y1, int x2, int y2) {
   if (grid[x1][y1]==grid[x2][y2]) {
     printf("On ne change rien, les bonbons sont identiques");
   }
-  
+
   //CAS 3: les bonbons sont différents et à coté
   else {
     switch_candy(x1,y1,x2,y2);
     refresh_tempt_grid();
     //on parcourt la grille et on retient le score dans var
-    int var=travel_grid(); 
+    int var=travel_grid();
 
     //CAS 3.1: pas de bonbons à exploser (ie score réalisé par travel_grid)
     if (var==0) {
@@ -300,7 +301,7 @@ void move(int x1, int y1, int x2, int y2) {
       switch_candy(x1,y1,x2,y2);
       printf("Deplacement pas possible, pas de bonbons a detruire");
     }
-    
+
     //CAS 3.2: il y a des bonbons qui ont explosés
     else if (var>=0) {
       //on incrément le nombre de déplacement
