@@ -9,11 +9,11 @@ int rest_moves;
 
 
 //fontion qui gère le niveau 1
-void play_level_1() {
+void play_level_1_terminal() {
 
   //initialisation du score totale
   total_score=0;
-  //fixation de l'objectif 
+  //fixation de l'objectif
   target=3000;
   //fixation du nombre de déplacement autorisé
   free_moves=5;
@@ -24,8 +24,8 @@ void play_level_1() {
   init_tempt_grid();
   create_a_good_grid();
 
- 
-  //gestion de la partie 
+
+  //gestion de la partie
   while(rest_moves!=0) {
 
     //affichage de la grille pour jouer dans le terminal
@@ -60,10 +60,10 @@ void play_level_1() {
 
   //gestion de fin de la partie: gagné ou perdu
   if (total_score<target) {
-    printf("Dommage ! Tu n'a pas atteint l'objectif.."); 
+    printf("Dommage ! Tu n'a pas atteint l'objectif..");
   }
   else {
-    printf("Bravo! Tu as gagne"); 
+    printf("Bravo! Tu as gagne");
   }
 
 }

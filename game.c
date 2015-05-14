@@ -6,7 +6,7 @@
 //Coucou les filles !
 
 /***********************************/
-/*           1.CONSTANTES          */
+/*           1.VARIABLES           */
 /***********************************/
 
 int tempt_grid[5][8];      //grille de suppresion des bonbons, elle n'est pas affichée
