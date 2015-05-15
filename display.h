@@ -29,6 +29,7 @@ typedef struct
 	ButtonHandler handler;	// fonction qu'on appelle en cliquant sur le bouton
 }Button;
 
+
 struct Layout 
 {
 	SDL_Renderer * renderer;
@@ -37,6 +38,8 @@ struct Layout
 	int nb_button_in_layout[E_max_nb_menu];
 	enum E_layout current_layout;
 };
+
+
 
 int create_menus(SDL_Window *, Layout *);
 

@@ -6,6 +6,7 @@
 
 #include "display.h"
 #include "events.h"
+#include "grid.h"
 
 int main(int argc, char** argv){
 
@@ -31,12 +32,29 @@ int main(int argc, char** argv){
 	}
 
 	create_menus(window, &layouts); //display.c
-	SDL_RenderPresent(layouts.renderer); // affiche le renderer dans la fenêtre
+
+	int grid[5][8];
+	init_grid(grid); //grid.c
+	SDL_Surface * candy_surfaces[7] = {
+	IMG_Load("purple_candy.png"),
+	IMG_Load("red_candy.png"),
+	IMG_Load("orange_candy.png"),
+	IMG_Load("yellow_candy.png"),
+	IMG_Load("green_candy.png"),
+	IMG_Load("blue_candy.png"),
+	IMG_Load("empty_candy.png"),
+	};
+	draw_candy(&layouts, E_level1_menu, grid,candy_surfaces);
+
+
+
 
 	/* Boucle principale */
 	while(!exit)
 	{
 		exit = events_handler(event, &layouts); //events.c
+		SDL_RenderPresent(layouts.renderer); // affiche le renderer dans la fenêtre
+
 	}
 	/* Destruction de la fenêtre */
 	SDL_DestroyWindow(window);
