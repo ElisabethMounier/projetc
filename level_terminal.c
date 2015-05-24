@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int target;   //objectif=score à atteindre pour gagner la partie
+int target;   //objectif=score a atteindre pour gagner la partie
 int free_moves;
 int rest_moves;
 
