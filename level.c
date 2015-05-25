@@ -14,9 +14,45 @@ void initialize_level_1() {
   //initialisation du score totale
   total_score=0;
   //fixation de l'objectif
+  target=1500;
+  //fixation du nombre de déplacement autorisé
+  free_moves=10;
+  //initialisation du nombre de déplacement restant
+  rest_moves=free_moves;
+  //initialisation des grilles
+  init_grid();
+  init_tempt_grid();
+  create_a_good_grid();
+
+
+}
+
+void initialize_level_2() {
+
+  //initialisation du score totale
+  total_score=0;
+  //fixation de l'objectif
+  target=2000;
+  //fixation du nombre de déplacement autorisé
+  free_moves=10;
+  //initialisation du nombre de déplacement restant
+  rest_moves=free_moves;
+  //initialisation des grilles
+  init_grid();
+  init_tempt_grid();
+  create_a_good_grid();
+
+
+}
+
+void initialize_level_2() {
+
+  //initialisation du score totale
+  total_score=0;
+  //fixation de l'objectif
   target=3000;
   //fixation du nombre de déplacement autorisé
-  free_moves=5;
+  free_moves=12;
   //initialisation du nombre de déplacement restant
   rest_moves=free_moves;
   //initialisation des grilles
