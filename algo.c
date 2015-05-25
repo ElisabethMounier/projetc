@@ -19,7 +19,7 @@ int zero[8];
 void initGrid() {
   for (i=0; i<5; i++) {
     for (j=0; j<8; j++) {
-      grid[i][j]=rand()%6+1;
+      grid[i][j]=rand()%7;
     }
   }
 }

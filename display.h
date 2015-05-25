@@ -16,6 +16,8 @@ enum E_layout // E comme enum
 	E_level_menu,
 	E_help_menu,
 	E_level1_menu,
+	E_win_menu,
+	E_lose_menu,
 	E_max_nb_menu
 };
 

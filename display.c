@@ -12,6 +12,7 @@ static int _exit(){
 static void _change_menu(Layout * l, enum E_layout layout)
 {
 	l->current_layout = layout;
+	//SDL_RenderClear( l->renderer );
 	SDL_RenderCopy(l->renderer, l->texture[layout], NULL, NULL);
 	SDL_RenderPresent(l->renderer);
 }
@@ -37,6 +38,18 @@ static int _get_help_menu(Layout * l, void * memo)
 static int _get_level1_menu(Layout * l, void * memo)
 {
 	_change_menu(l, E_level1_menu);
+	return 0;
+}
+
+static int _get_win_menu(Layout * l, void * memo)
+{
+	_change_menu(l, E_win_menu);
+	return 0;
+}
+
+static int _get_lose_menu(Layout * l, void * memo)
+{
+	_change_menu(l, E_lose_menu);
 	return 0;
 }
 
@@ -119,84 +132,29 @@ static int _add_grid_to_menu(Layout * l, int x, int y, enum E_layout e, char * i
 
 
 
-/*static int _add_grid_to_menu(Layout * l)
-{
-	MaTexture* gSpriteSheetTexture = maTexture_create();
-	MaTexture* gridCandy = maTexture_create();
-	SDL_Texture * temp_texture; 
-
-	SDL_Rect stretchRect; 
-	stretchRect.x = 0; 
-	stretchRect.y = 0; 
-	stretchRect.w = 600; 
-	stretchRect.h = 467;
-
-	SDL_Rect spritcandies[6][5];
-
-
-	RGB couleur_sprite_candy={0 ,0, 0};
-	int grid[5][8];
-
-	SDL_SetRenderDrawColor( l->renderer, 0xFF, 0xFF, 0xFF, 0xFF );
-
-	gridCandy=loadMaTexture2( "gridCandy.bmp",l->renderer,couleur_sprite_candy);
-	gSpriteSheetTexture=loadMaTexture2( "gridCandy.bmp" ,l->renderer,couleur_sprite_candy);
-
-	int i,j;
-	for(i = 0; i < 6;i++){
-		for(j=0;j<5;j++){
-			spritcandies[ i ][ j ].x = i*100; spritcandies[ i ][ j ].y = j*93; spritcandies[ i ][ j ].w = 100; spritcandies[ i ][ j ].h = 93;
-		}
-	}
-	void initGrid() {
-  		for (i=0; i<5; i++) {
-    			for (j=0; j<8; j++) {
-      				grid[i][j]=rand()%6+1;
-    			}
-  		}
-	}
-
-	initGrid();
-	SDL_RenderClear( l->renderer );
-	i=0;
-	for (i=0; i<5; i++) {
-    					for (j=0; j<8; j++) {	
-    						printf("%d",grid[i][j]);
-						render( i*100,j*93 ,gridCandy,l->renderer,&spritcandies[ grid[i][j]-1][0]);
-					}
-				}
-
-	SDL_SetRenderDrawColor( l->renderer, 0xFF, 0xFF, 0xFF, 0xFF );
-        			//SDL_RenderClear( gRenderer );
-        
-        			//render( 0,0 ,accueil1,gRenderer,&spritcandies[ 0][2]);
-        
-        			SDL_RenderPresent( l->renderer );
-
-
-	SDL_SetRenderTarget(l->renderer,NULL);
-
-	return 0;
-
-} */
-
 int create_menus(SDL_Window * window, Layout * l)
 {
+		
 	l->renderer = SDL_CreateRenderer(window, 0, SDL_RENDERER_ACCELERATED); // récupère le renderer
 	if(l->renderer == NULL)
 		printf("%s\n", SDL_GetError());
 
 	_init_layout(l);
-
+	SDL_RenderClear( l->renderer );
 	/***************************************/
 	/*             MAIN_MENU               */
 	/***************************************/
 
 	_add_background_to_menu(l, E_main_menu, "background.bmp");
+	
 	_add_button_to_menu(l, 400, 200,_get_level_menu, E_main_menu, "buttonStart.png");
+		
 	_add_button_to_menu(l, 400, 500,_get_help_menu, E_main_menu, "buttonHelp.png");
+		
 	_add_button_to_menu(l, 1050, 700,_exit, E_main_menu, "buttonExit.png");
 
+	
+	
 	/***************************************/
 	/*            LEVEL_MENU               */
 	/***************************************/
@@ -208,15 +166,17 @@ int create_menus(SDL_Window * window, Layout * l)
 	_add_button_to_menu(l, 1050, 700,_exit, E_level_menu, "buttonExit.png");
 	_add_button_to_menu(l, 100, 400,_get_main_menu, E_level_menu, "buttonMainMenu.png");
 
-
+		
 	/***************************************/
 	/*             HELP_MENU               */
 	/***************************************/
 
 	_add_background_to_menu(l, E_help_menu, "background.bmp"); 
-	_add_button_to_menu(l,100, 400,_get_main_menu, E_help_menu, "buttonMainMenu.png"); 
+	_add_button_to_menu(l,20, 650,_get_main_menu, E_help_menu, "buttonMainMenu.png"); 
+	_add_button_to_menu(l,150, 50,_get_main_menu, E_help_menu, "help.png"); 
 
 
+	
 	/***************************************/
 	/*             LEVEL1_MENU             */
 	/***************************************/
@@ -226,7 +186,27 @@ int create_menus(SDL_Window * window, Layout * l)
 	_add_button_to_menu(l,20, 200,_get_level1_menu, E_level1_menu, "moves.png");
 	_add_button_to_menu(l,20, 400,_get_level1_menu, E_level1_menu, "Score.png");
 	_add_button_to_menu(l,900, 30,_get_level1_menu, E_level1_menu, "target.png");
-	_add_grid_to_menu(l, 380, 150, E_level1_menu, "grid.bmp");
+	_add_grid_to_menu(l, 372, 145, E_level1_menu, "grid.bmp");
+
+	
+
+	/***************************************/
+	/*             WIN_MENU                */
+	/***************************************/
+
+	_add_background_to_menu(l, E_win_menu, "background.bmp");
+	_add_button_to_menu(l, 100, 200, _get_win_menu, E_win_menu, "winImage.png");
+	_add_button_to_menu(l, 20, 650, _get_level_menu, E_win_menu, "buttonLevelMenu.png");
+
+	/***************************************/
+	/*             LOSE_MENU                */
+	/***************************************/
+
+	_add_background_to_menu(l, E_lose_menu, "background.bmp");
+	_add_button_to_menu(l, 20, 650, _get_level_menu, E_lose_menu, "buttonLevelMenu.png");
+	_add_button_to_menu(l, 880, 650, _get_level1_menu, E_lose_menu, "tryagain.png");
+	_add_button_to_menu(l, 300, 150, _get_lose_menu, E_lose_menu, "loseImage.png");
+
 
 	SDL_RenderCopy(l->renderer, l->texture[l->current_layout], NULL, NULL);
 
