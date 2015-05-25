@@ -120,67 +120,6 @@ static int _add_grid_to_menu(Layout * l, int x, int y, enum E_layout e, char * i
 
 
 
-/*static int _add_grid_to_menu(Layout * l)
-{
-	MaTexture* gSpriteSheetTexture = maTexture_create();
-	MaTexture* gridCandy = maTexture_create();
-	SDL_Texture * temp_texture; 
-
-	SDL_Rect stretchRect; 
-	stretchRect.x = 0; 
-	stretchRect.y = 0; 
-	stretchRect.w = 600; 
-	stretchRect.h = 467;
-
-	SDL_Rect spritcandies[6][5];
-
-
-	RGB couleur_sprite_candy={0 ,0, 0};
-	int grid[5][8];
-
-	SDL_SetRenderDrawColor( l->renderer, 0xFF, 0xFF, 0xFF, 0xFF );
-
-	gridCandy=loadMaTexture2( "gridCandy.bmp",l->renderer,couleur_sprite_candy);
-	gSpriteSheetTexture=loadMaTexture2( "gridCandy.bmp" ,l->renderer,couleur_sprite_candy);
-
-	int i,j;
-	for(i = 0; i < 6;i++){
-		for(j=0;j<5;j++){
-			spritcandies[ i ][ j ].x = i*100; spritcandies[ i ][ j ].y = j*93; spritcandies[ i ][ j ].w = 100; spritcandies[ i ][ j ].h = 93;
-		}
-	}
-	void initGrid() {
-  		for (i=0; i<5; i++) {
-    			for (j=0; j<8; j++) {
-      				grid[i][j]=rand()%6+1;
-    			}
-  		}
-	}
-
-	initGrid();
-	SDL_RenderClear( l->renderer );
-	i=0;
-	for (i=0; i<5; i++) {
-    					for (j=0; j<8; j++) {	
-    						printf("%d",grid[i][j]);
-						render( i*100,j*93 ,gridCandy,l->renderer,&spritcandies[ grid[i][j]-1][0]);
-					}
-				}
-
-	SDL_SetRenderDrawColor( l->renderer, 0xFF, 0xFF, 0xFF, 0xFF );
-        			//SDL_RenderClear( gRenderer );
-        
-        			//render( 0,0 ,accueil1,gRenderer,&spritcandies[ 0][2]);
-        
-        			SDL_RenderPresent( l->renderer );
-
-
-	SDL_SetRenderTarget(l->renderer,NULL);
-
-	return 0;
-
-} */
-
 int create_menus(SDL_Window * window, Layout * l)
 {
 		

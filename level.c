@@ -4,9 +4,9 @@
 #include <string.h>
 #include "algo.h"
 
-int target;   //objectif=score à atteindre pour gagner la partie
+//int target;   //objectif=score à atteindre pour gagner la partie
 int free_moves;
-int rest_moves;
+//int rest_moves;
 
 
 //fontion qui gère le niveau 1
@@ -15,45 +15,11 @@ void initialize_level_1() {
   //initialisation du score totale
   total_score=0;
   //fixation de l'objectif
-  target=1500;
-  //fixation du nombre de déplacement autorisé
-  free_moves=10;
-  //initialisation du nombre de déplacement restant
-  rest_moves=free_moves;
-  //initialisation des grilles
-  init_grid();
-  init_tempt_grid();
-  create_a_good_grid();
-
-
-}
-
-void initialize_level_2() {
-
-  //initialisation du score totale
-  total_score=0;
-  //fixation de l'objectif
   target=2000;
   //fixation du nombre de déplacement autorisé
   free_moves=10;
-  //initialisation du nombre de déplacement restant
-  rest_moves=free_moves;
-  //initialisation des grilles
-  init_grid();
-  init_tempt_grid();
-  create_a_good_grid();
 
-
-}
-
-void initialize_level_3() {
-
-  //initialisation du score totale
-  total_score=0;
-  //fixation de l'objectif
-  target=3000;
-  //fixation du nombre de déplacement autorisé
-  free_moves=12;
+  moves=0;
   //initialisation du nombre de déplacement restant
   rest_moves=free_moves;
   //initialisation des grilles
@@ -87,7 +53,6 @@ void play(int x1, int y1, int x2, int y2) { //l'idee c'est que suivant la ou on 
   //}
 
   //gestion de fin de la partie: gagné ou perdu
-
 /*  if (total_score<target) {
     printf("Dommage ! Tu n'a pas atteint l'objectif..");
   }
@@ -95,7 +60,6 @@ void play(int x1, int y1, int x2, int y2) { //l'idee c'est que suivant la ou on 
     printf("Bravo! Tu as gagne");
   }*/
 
-
-
+}
 
 

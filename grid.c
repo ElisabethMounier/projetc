@@ -62,9 +62,9 @@ int draw_move(Layout * l,enum E_layout e,SDL_Surface *temp_surface)
 	SDL_Texture * texture;
 	SDL_Rect rect;		
     	texture = SDL_CreateTextureFromSurface(l->renderer, temp_surface);
-    	rect.x = 75;
-    	rect.y = 255;
-    	rect.w = 250;
+    	rect.x = 150;
+    	rect.y = 265;
+    	rect.w = 100;
     	rect.h = 50;
 	SDL_FreeSurface(temp_surface);
     	SDL_RenderCopy(l->renderer, texture, NULL, &rect);
@@ -73,7 +73,21 @@ return 0;
 
 }
 
+int draw_target(Layout * l,enum E_layout e,SDL_Surface *temp_surface)
+{
+	SDL_Texture * texture;
+	SDL_Rect rect;		
+    	texture = SDL_CreateTextureFromSurface(l->renderer, temp_surface);
+    	rect.x = 1085;
+    	rect.y = 60;
+    	rect.w = 130;
+    	rect.h = 50;
+	SDL_FreeSurface(temp_surface);
+    	SDL_RenderCopy(l->renderer, texture, NULL, &rect);
 
+return 0;
+
+}
 
 
 
