@@ -45,7 +45,7 @@ void initialize_level_2() {
 
 }
 
-void initialize_level_2() {
+void initialize_level_3() {
 
   //initialisation du score totale
   total_score=0;
