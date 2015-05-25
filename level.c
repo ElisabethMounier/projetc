@@ -50,13 +50,13 @@ void play(int x1, int y1, int x2, int y2) { //l'idee c'est que suivant la ou on 
   }
 
   //gestion de fin de la partie: gagné ou perdu
-  if (total_score<target) {
-    printf("Dommage ! Tu n'a pas atteint l'objectif..");
-  }
-  else {
-    printf("Bravo! Tu as gagne");
-  }
+  //if (total_score<target) {
+   // printf("Dommage ! Tu n'a pas atteint l'objectif..");
+  //}
+  //else {
+  //  printf("Bravo! Tu as gagne");
+ // }
 
-}
+
 
 
