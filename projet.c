@@ -171,7 +171,7 @@ int main(int argc, char *argv[])
 
 						switch( e.key.keysym.sym ) { 
 							case SDLK_SPACE:
-            							{    // accleration
+            							{    // acceleration
             								accueil=1;
             								break;
             							}

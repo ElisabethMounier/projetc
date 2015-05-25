@@ -12,6 +12,7 @@ static int _exit(){
 static void _change_menu(Layout * l, enum E_layout layout)
 {
 	l->current_layout = layout;
+	//SDL_RenderClear( l->renderer );
 	SDL_RenderCopy(l->renderer, l->texture[layout], NULL, NULL);
 	SDL_RenderPresent(l->renderer);
 }
@@ -182,21 +183,27 @@ static int _add_grid_to_menu(Layout * l, int x, int y, enum E_layout e, char * i
 
 int create_menus(SDL_Window * window, Layout * l)
 {
+		
 	l->renderer = SDL_CreateRenderer(window, 0, SDL_RENDERER_ACCELERATED); // récupère le renderer
 	if(l->renderer == NULL)
 		printf("%s\n", SDL_GetError());
 
 	_init_layout(l);
-
+	SDL_RenderClear( l->renderer );
 	/***************************************/
 	/*             MAIN_MENU               */
 	/***************************************/
 
 	_add_background_to_menu(l, E_main_menu, "background.bmp");
+	
 	_add_button_to_menu(l, 400, 200,_get_level_menu, E_main_menu, "buttonStart.png");
+		
 	_add_button_to_menu(l, 400, 500,_get_help_menu, E_main_menu, "buttonHelp.png");
+		
 	_add_button_to_menu(l, 1050, 700,_exit, E_main_menu, "buttonExit.png");
 
+	
+	
 	/***************************************/
 	/*            LEVEL_MENU               */
 	/***************************************/
@@ -208,7 +215,7 @@ int create_menus(SDL_Window * window, Layout * l)
 	_add_button_to_menu(l, 1050, 700,_exit, E_level_menu, "buttonExit.png");
 	_add_button_to_menu(l, 100, 400,_get_main_menu, E_level_menu, "buttonMainMenu.png");
 
-
+		
 	/***************************************/
 	/*             HELP_MENU               */
 	/***************************************/
@@ -216,7 +223,7 @@ int create_menus(SDL_Window * window, Layout * l)
 	_add_background_to_menu(l, E_help_menu, "background.bmp"); 
 	_add_button_to_menu(l,100, 400,_get_main_menu, E_help_menu, "buttonMainMenu.png"); 
 
-
+	
 	/***************************************/
 	/*             LEVEL1_MENU             */
 	/***************************************/
@@ -228,6 +235,7 @@ int create_menus(SDL_Window * window, Layout * l)
 	_add_button_to_menu(l,900, 30,_get_level1_menu, E_level1_menu, "target.png");
 	_add_grid_to_menu(l, 380, 150, E_level1_menu, "grid.bmp");
 
+	
 	SDL_RenderCopy(l->renderer, l->texture[l->current_layout], NULL, NULL);
 
 	return 0;

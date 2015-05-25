@@ -38,9 +38,11 @@ bool events_handler(SDL_Event e, Layout * l)
 			break;
 
 			case SDL_MOUSEBUTTONUP:
+				
 				if(e.button.button == SDL_BUTTON_LEFT)
 				{
 					button_clicked = _get_button_clicked(e.motion.x, e.motion.y, l->buttons[l->current_layout]);
+
 					if(button_clicked < 0)
 						break;
 

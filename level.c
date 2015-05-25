@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "algo.h"
 
 int target;   //objectif=score à atteindre pour gagner la partie
 int free_moves;
@@ -47,15 +48,15 @@ void play(int x1, int y1, int x2, int y2) { //l'idee c'est que suivant la ou on 
     rest_moves=free_moves-moves;
     printf("\n Il te reste: %d\n deplacement", rest_moves);
     printf("\n Ton score: %d\n", total_score);
-  }
+  //}
 
   //gestion de fin de la partie: gagné ou perdu
-  if (total_score<target) {
+/*  if (total_score<target) {
     printf("Dommage ! Tu n'a pas atteint l'objectif..");
   }
   else {
     printf("Bravo! Tu as gagne");
-  }
+  }*/
 
 }
 
