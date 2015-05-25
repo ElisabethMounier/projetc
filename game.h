@@ -25,7 +25,9 @@ void move(int x1, int y1, int x2, int y2);
 void create_a_good_grid();
 void play_level_1();
 void play_level_1_terminal();
-void play_level_1();
-
+int target;
+int free_moves;
+int rest_moves;
+void initialize_level_1()
 
 #endif
